@@ -25,7 +25,7 @@ class FilterableTest extends TestCase
     /** @test */
     public function it_can_apply_class_filters_with_paramters()
     {
-        $postModel = new class extends Post {
+        $postModel = new class () extends Post {
             public function getFilters(): array
             {
                 return [
@@ -46,7 +46,7 @@ class FilterableTest extends TestCase
     /** @test */
     public function it_can_apply_class_filters_with_a_constructor()
     {
-        $postModel = new class extends Post {
+        $postModel = new class () extends Post {
             public function getFilters(): array
             {
                 return [
@@ -67,7 +67,7 @@ class FilterableTest extends TestCase
     /** @test */
     public function it_can_apply_class_filters_with_a_callback()
     {
-        $postModel = new class extends Post {
+        $postModel = new class () extends Post {
             public function getFilters(): array
             {
                 return [
@@ -75,7 +75,7 @@ class FilterableTest extends TestCase
                         $query->where('title', 'like', '%dogs%');
 
                         $next($query);
-                    }
+                    },
                 ];
             }
         };

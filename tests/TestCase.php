@@ -19,7 +19,6 @@ abstract class TestCase extends BaseTestCase
         });
     }
 
-
     protected function tearDown(): void
     {
         Schema::dropIfExists('posts');
@@ -31,4 +30,4 @@ abstract class TestCase extends BaseTestCase
     {
         return [QueryFiltersServiceProvider::class];
     }
-} 
+}
