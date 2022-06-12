@@ -1,23 +1,25 @@
 {
-    "name": ":vendor/:package_slug",
-    "description": ":package_description",
+    "name": "esign/laravel-query-filters",
+    "description": "Apply filters to Laravel's query builder.",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "esign",
+        "query-filter"
     ],
-    "homepage": "https://github.com/:vendor/:package_slug",
+    "homepage": "https://github.com/esign/laravel-query-filters",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Jordy Van der Haegen",
+            "email": "jordy.vanderhaegen@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^8.0"
+        "illuminate/support": "^8.0|^9.0",
+        "illuminate/database": "^8.0|^9.0",
+        "illuminate/pipeline": "^8.0|^9.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.5",
@@ -26,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor_namespace_escaped\\": "src"
+            "Esign\\QueryFilters\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor_namespace_escaped\\Tests\\": "tests"
+            "Esign\\QueryFilters\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,11 +46,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                ":vendor_namespace_escaped\\:studly_package_nameServiceProvider"
-            ],
-            "aliases": {
-                ":studly_package_name": ":vendor_namespace_escaped\\Facades\\:studly_package_nameFacade"
-            }
+                "Esign\\QueryFilters\\QueryFiltersServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
