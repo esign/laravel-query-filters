@@ -119,6 +119,31 @@ class TitleFilter
 }
 ```
 
+### Method filters
+This package also ships with a handy `MethodFilter` class that allows you to define filters for query string parameters as methods.
+Image we have a request that filters a list of posts with the following query string: `?published_at=2022-01-01&title=dogs`.
+We could create a `PostFilter` that extends the `MethodFilter` class with the camelcased method names:
+
+```php
+use Esign\QueryFilters\Filters\MethodFilter;
+use Illuminate\Database\Eloquent\Builder;
+
+class PostFilter extends MethodFilter
+{
+    public function title(mixed $value): Builder
+    {
+        return $this->query->where('title', 'like', "%$value%");
+    }
+
+    public function publishedAt(mixed $value): Builder
+    {
+        return $this->query->where('published_at', '=', $value);
+    }
+}
+```
+
+By default, query string parameters that contain an empty value won't be called.
+
 ### Testing
 
 ```bash

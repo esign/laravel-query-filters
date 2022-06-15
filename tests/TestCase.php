@@ -16,6 +16,7 @@ abstract class TestCase extends BaseTestCase
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->date('publish_date')->nullable();
         });
     }
 
