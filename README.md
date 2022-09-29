@@ -121,7 +121,7 @@ class TitleFilter
 
 ### Method filters
 This package also ships with a handy `MethodFilter` class that allows you to define filters for query string parameters as methods.
-Image we have a request that filters a list of posts with the following query string: `?published_at=2022-01-01&title=dogs`.
+Imagine we have a request that filters a list of posts with the following query string: `?published_at=2022-01-01&title=dogs`.
 We could create a `PostFilter` that extends the `MethodFilter` class with the camelcased method names:
 
 ```php
