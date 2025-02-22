@@ -2,15 +2,16 @@
 
 namespace Esign\QueryFilters\Tests\Filters;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\QueryFilters\Tests\Support\Filters\PostFilter;
 use Esign\QueryFilters\Tests\Support\Models\Post;
 use Esign\QueryFilters\Tests\TestCase;
 use Illuminate\Http\Request;
 
-class MethodFilterTest extends TestCase
+final class MethodFilterTest extends TestCase
 {
-    /** @test */
-    public function it_can_apply_a_filter_if_a_valid_value_is_given()
+    #[Test]
+    public function it_can_apply_a_filter_if_a_valid_value_is_given(): void
     {
         $request = new Request(['title' => 'dogs']);
         $postA = Post::create(['title' => 'Post about dogs']);
@@ -24,8 +25,8 @@ class MethodFilterTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_wont_apply_a_filter_if_an_invalid_value_is_given()
+    #[Test]
+    public function it_wont_apply_a_filter_if_an_invalid_value_is_given(): void
     {
         $request = new Request(['title' => null]);
         $postA = Post::create(['title' => 'Post about dogs']);
@@ -39,8 +40,8 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_wont_apply_a_filter_if_no_value_is_given()
+    #[Test]
+    public function it_wont_apply_a_filter_if_no_value_is_given(): void
     {
         $request = new Request();
         $postA = Post::create(['title' => 'Post about dogs']);
@@ -54,8 +55,8 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_wont_apply_a_filter_if_no_method_exists()
+    #[Test]
+    public function it_wont_apply_a_filter_if_no_method_exists(): void
     {
         $request = new Request(['non_existing_query_method' => 'abc']);
         $postA = Post::create(['title' => 'Post about dogs']);
@@ -69,8 +70,8 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_can_guess_the_camelcased_method_name()
+    #[Test]
+    public function it_can_guess_the_camelcased_method_name(): void
     {
         $request = new Request(['publish_date' => '2022-01-01']);
         $postA = Post::create(['publish_date' => '2022-01-01']);

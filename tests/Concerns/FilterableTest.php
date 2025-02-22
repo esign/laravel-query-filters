@@ -2,16 +2,17 @@
 
 namespace Esign\QueryFilters\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Closure;
 use Esign\QueryFilters\Tests\Support\Filters\TitleFilterWithConstructor;
 use Esign\QueryFilters\Tests\Support\Filters\TitleFilterWithParameter;
 use Esign\QueryFilters\Tests\Support\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
 
-class FilterableTest extends TestCase
+final class FilterableTest extends TestCase
 {
-    /** @test */
-    public function it_can_apply_class_filters()
+    #[Test]
+    public function it_can_apply_class_filters(): void
     {
         $postA = Post::create(['title' => 'Post about dogs']);
         $postB = Post::create(['title' => 'Post about cats']);
@@ -22,8 +23,8 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_can_apply_class_filters_with_paramters()
+    #[Test]
+    public function it_can_apply_class_filters_with_paramters(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -43,8 +44,8 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_can_apply_class_filters_with_a_constructor()
+    #[Test]
+    public function it_can_apply_class_filters_with_a_constructor(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -64,8 +65,8 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_can_apply_class_filters_with_a_callback()
+    #[Test]
+    public function it_can_apply_class_filters_with_a_callback(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -89,8 +90,8 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
-    public function it_can_pass_a_custom_filter()
+    #[Test]
+    public function it_can_pass_a_custom_filter(): void
     {
         $postA = Post::create(['title' => 'Post about dogs']);
         $postB = Post::create(['title' => 'Post about cats']);
