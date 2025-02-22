@@ -9,7 +9,7 @@ use Esign\QueryFilters\Tests\Support\Filters\TitleFilterWithParameter;
 use Esign\QueryFilters\Tests\Support\Models\Post;
 use Illuminate\Database\Eloquent\Builder;
 
-class FilterableTest extends TestCase
+final class FilterableTest extends TestCase
 {
     #[Test]
     public function it_can_apply_class_filters(): void

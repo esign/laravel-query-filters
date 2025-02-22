@@ -8,7 +8,7 @@ use Esign\QueryFilters\Tests\Support\Models\Post;
 use Esign\QueryFilters\Tests\TestCase;
 use Illuminate\Http\Request;
 
-class MethodFilterTest extends TestCase
+final class MethodFilterTest extends TestCase
 {
     #[Test]
     public function it_can_apply_a_filter_if_a_valid_value_is_given(): void
