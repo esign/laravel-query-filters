@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 class FilterableTest extends TestCase
 {
     #[Test]
-    public function it_can_apply_class_filters()
+    public function it_can_apply_class_filters(): void
     {
         $postA = Post::create(['title' => 'Post about dogs']);
         $postB = Post::create(['title' => 'Post about cats']);
@@ -24,7 +24,7 @@ class FilterableTest extends TestCase
     }
 
     #[Test]
-    public function it_can_apply_class_filters_with_paramters()
+    public function it_can_apply_class_filters_with_paramters(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -45,7 +45,7 @@ class FilterableTest extends TestCase
     }
 
     #[Test]
-    public function it_can_apply_class_filters_with_a_constructor()
+    public function it_can_apply_class_filters_with_a_constructor(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -66,7 +66,7 @@ class FilterableTest extends TestCase
     }
 
     #[Test]
-    public function it_can_apply_class_filters_with_a_callback()
+    public function it_can_apply_class_filters_with_a_callback(): void
     {
         $postModel = new class () extends Post {
             public function getFilters(): array
@@ -91,7 +91,7 @@ class FilterableTest extends TestCase
     }
 
     #[Test]
-    public function it_can_pass_a_custom_filter()
+    public function it_can_pass_a_custom_filter(): void
     {
         $postA = Post::create(['title' => 'Post about dogs']);
         $postB = Post::create(['title' => 'Post about cats']);
