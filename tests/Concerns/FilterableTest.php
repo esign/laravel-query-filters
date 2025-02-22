@@ -2,6 +2,7 @@
 
 namespace Esign\QueryFilters\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Closure;
 use Esign\QueryFilters\Tests\Support\Filters\TitleFilterWithConstructor;
 use Esign\QueryFilters\Tests\Support\Filters\TitleFilterWithParameter;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class FilterableTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_apply_class_filters()
     {
         $postA = Post::create(['title' => 'Post about dogs']);
@@ -22,7 +23,7 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_apply_class_filters_with_paramters()
     {
         $postModel = new class () extends Post {
@@ -43,7 +44,7 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_apply_class_filters_with_a_constructor()
     {
         $postModel = new class () extends Post {
@@ -64,7 +65,7 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_apply_class_filters_with_a_callback()
     {
         $postModel = new class () extends Post {
@@ -89,7 +90,7 @@ class FilterableTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_pass_a_custom_filter()
     {
         $postA = Post::create(['title' => 'Post about dogs']);

@@ -2,6 +2,7 @@
 
 namespace Esign\QueryFilters\Tests\Filters;
 
+use PHPUnit\Framework\Attributes\Test;
 use Esign\QueryFilters\Tests\Support\Filters\PostFilter;
 use Esign\QueryFilters\Tests\Support\Models\Post;
 use Esign\QueryFilters\Tests\TestCase;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class MethodFilterTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_apply_a_filter_if_a_valid_value_is_given()
     {
         $request = new Request(['title' => 'dogs']);
@@ -24,7 +25,7 @@ class MethodFilterTest extends TestCase
         $this->assertFalse($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_wont_apply_a_filter_if_an_invalid_value_is_given()
     {
         $request = new Request(['title' => null]);
@@ -39,7 +40,7 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_wont_apply_a_filter_if_no_value_is_given()
     {
         $request = new Request();
@@ -54,7 +55,7 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_wont_apply_a_filter_if_no_method_exists()
     {
         $request = new Request(['non_existing_query_method' => 'abc']);
@@ -69,7 +70,7 @@ class MethodFilterTest extends TestCase
         $this->assertTrue($filteredPosts->contains($postB));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_guess_the_camelcased_method_name()
     {
         $request = new Request(['publish_date' => '2022-01-01']);
